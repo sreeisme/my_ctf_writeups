@@ -11,10 +11,6 @@ This was a realistic full-chain penetration testing challenge involving Active D
 
 ## Reconnaissance Phase
 
-### Initial Observation
-
-The environment presented a complete Active Directory setup on the private IP `10.129.2.62`, but with a trap - the subnet scan showed `10.129.2.74` as the actual target. This was the first test: could I identify the right box to target?
-
 ### Service Discovery
 
 I performed a comprehensive port and service scan across the range:
